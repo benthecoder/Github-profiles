@@ -14,7 +14,7 @@ This is a app built with React that allows users to search for Github users and 
 - no. of public repositories
 - latest repositories sorted by when it was last committed and limited to the top 20
 
-[Try it out here]()
+[Try it out here](https://github-profiles-finder.vercel.app/)
 
 ## Run locally
 
