@@ -14,23 +14,7 @@ This is a app built with React that allows users to search for Github users and 
 - no. of public repositories
 - latest repositories sorted by when it was last committed and limited to the top 20
 
-## Images of the app
-
-### Homepage with search bar
-
-![search](img/search.png)
-
-### User Results from search
-
-The query was "benedict"
-
-![user results](img/results.png)
-
-### User Dashboard
-
-![dashboard](img/profile.png)
-
-In the project directory, you can run:
+[Try it out here]()
 
 ## Run locally
 

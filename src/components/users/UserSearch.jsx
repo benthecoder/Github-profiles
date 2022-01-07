@@ -4,62 +4,62 @@ import AlertContext from '../../context/alert/AlertContext';
 import { searchUsers } from '../../context/github/GithubActions';
 
 function UserSearch() {
-	const { users, dispatch } = useContext(GithubContext);
-	const { setAlert } = useContext(AlertContext);
+  const { users, dispatch } = useContext(GithubContext);
+  const { setAlert } = useContext(AlertContext);
 
-	const [text, setText] = useState('');
+  const [text, setText] = useState('');
 
-	const handleChange = (e) => setText(e.target.value);
+  const handleChange = (e) => setText(e.target.value);
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-		if (text === '') {
-			setAlert('Please enter something', 'error');
-		} else {
-			dispatch({ type: 'SET_LOADING' });
-			const users = await searchUsers(text);
-			dispatch({ type: 'GET_USERS', payload: users });
-			setText('');
-		}
-	};
+    if (text === '') {
+      setAlert('Please enter something', 'error');
+    } else {
+      dispatch({ type: 'SET_LOADING' });
+      const users = await searchUsers(text);
+      dispatch({ type: 'GET_USERS', payload: users });
+      setText('');
+    }
+  };
 
-	return (
-		<div className='flex mb-8 gap-5'>
-			<div className='grow xl:ml-96 md:ml-32'>
-				<form onSubmit={handleSubmit}>
-					<div className='form-control'>
-						<div className='relative'>
-							<input
-								type='text'
-								className='w-full bg-gray-200 input input-secondary input-lg text-black'
-								placeholder='Search Github Users'
-								value={text}
-								onChange={handleChange}
-							/>
-							<button
-								type='submit'
-								className='absolute top-0 right-0 rounded-l-none btn btn-secondary btn-lg w-24'
-							>
-								Go
-							</button>
-						</div>
-					</div>
-				</form>
-			</div>
+  return (
+    <div className='flex mb-8 gap-5'>
+      <div className='grow xl:ml-96 md:ml-32'>
+        <form onSubmit={handleSubmit}>
+          <div className='form-control'>
+            <div className='relative'>
+              <input
+                type='text'
+                className='w-full bg-gray-200 input input-secondary input-lg text-black'
+                placeholder='Search Github Users'
+                value={text}
+                onChange={handleChange}
+              />
+              <button
+                type='submit'
+                className='absolute top-0 right-0 rounded-l-none btn btn-secondary btn-lg w-24'
+              >
+                Go
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
 
-			{users.length > 0 && (
-				<div className='flex-none'>
-					<button
-						onClick={() => dispatch({ type: 'CLEAR_USERS' })}
-						className='btn btn-ghost btn-lg'
-					>
-						Clear
-					</button>
-				</div>
-			)}
-		</div>
-	);
+      {users.length > 0 && (
+        <div className='flex-none'>
+          <button
+            onClick={() => dispatch({ type: 'CLEAR_USERS' })}
+            className='btn btn-ghost btn-lg'
+          >
+            Clear
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default UserSearch;
